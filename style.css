@@ -1,0 +1,84 @@
+body {
+  font-size: 35px;
+  text-align: center;
+}
+
+#slider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+#radio-group,
+#filters_size_passenger_cars,
+#filters_by_car,
+#filters_truck,
+#filters_agro,
+#filters_wheel {
+  margin-top: 20px;
+}
+
+select,
+button {
+  display: block;
+  margin: 5px auto;
+  width: 300px;
+  font-size: 25px;
+  padding: 5px;
+}
+
+#submit {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+/* Карточка товара */
+#results {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.product-card {
+  width: 300px;
+  padding: 20px;
+  border: 2px solid #ccc;
+  background-color: #f9f9f9;
+  text-align: center;
+  font-size: 25px;
+}
+
+.model {
+  font-weight: bold;
+  word-wrap: break-word;
+  margin-bottom: 10px;
+}
+
+.stock, .price {
+  margin: 5px 0;
+}
+
+.photo {
+  width: 100%;
+  height: 150px;
+  object-fit: contain;
+  margin: 10px 0;
+}
+
+.btn-plus, .btn-minus {
+  font-size: 30px;
+  padding: 5px 15px;
+  margin: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-plus { background-color: #aaffaa; }
+.btn-minus { background-color: #ffaaaa; }
