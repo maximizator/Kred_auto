@@ -81,8 +81,8 @@
     .hero .btn {
       display: inline-block;
       padding: 20px 40px;
-      background-color: #007bff; /* синий */
-      border: 1px solid rgb(200, 200, 200);
+      background-color: #1d5c9e; /* синий */
+      border: none;
       color: white;
       text-decoration: none;
       border-radius: 40px;
@@ -351,7 +351,8 @@
 }
 
 #checkout {
-  background-color: #007bff;
+  background-color: #1d5c9e;
+  border: none;
   color: white;
   border: none;
   padding: 12px 24px;
