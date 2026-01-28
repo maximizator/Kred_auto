@@ -15,7 +15,7 @@
       position: relative;
       border-radius: 30px;
       margin-top: 20px;
-      border: 1px solid rgb(89, 89, 89)
+      border: 1px solid rgb(53, 53, 53)
     }
 
     /* Шапка */
@@ -23,7 +23,7 @@
       height: 60px;
       background-color: #000000;
     }
-
+    
     .top-bar a,
     .top-bar .logo-text {
       position: absolute;
@@ -33,15 +33,15 @@
       font-size: 18px;
     }
 
-    .logo-text { top: 8px; left: 10px; background-color: #202020; padding: 10px; border: 1px solid rgb(89, 89, 89); border-radius: 20px;}
+    .logo-text { top: 8px; left: 10px; background-color: #202020; padding: 10px; border: 1px solid rgb(53, 53, 53); border-radius: 20px;}
     
     .nav-cart {top: 13px; right: 565px; cursor: pointer;}
     .nav-cart img {width: 35px; height: auto;}
 
-    .nav-admin { top: 8px; right: 340px; background-color: #202020; padding: 10px; border: 1px solid rgb(89, 89, 89); border-radius: 20px; cursor: pointer;}
-    .nav-about { top: 8px; right: 250px; background-color: #202020; padding: 10px; border: 1px solid rgb(89, 89, 89); border-radius: 20px; cursor: pointer;}
-    .nav-catalog { top: 8px; right: 137px; background-color: #202020; padding: 10px; border: 1px solid rgb(89, 89, 89); border-radius: 20px; cursor: pointer;}
-    .nav-contacts { top: 8px; right: 10px; background-color: #202020; padding: 10px; border: 1px solid rgb(89, 89, 89); border-radius: 20px; cursor: pointer;}
+    .nav-admin { top: 8px; right: 340px; background-color: #202020; padding: 10px; border: 1px solid rgb(53, 53, 53); border-radius: 20px; cursor: pointer;}
+    .nav-about { top: 8px; right: 250px; background-color: #202020; padding: 10px; border: 1px solid rgb(53, 53, 53); border-radius: 20px; cursor: pointer;}
+    .nav-catalog { top: 8px; right: 137px; background-color: #202020; padding: 10px; border: 1px solid rgb(53, 53, 53); border-radius: 20px; cursor: pointer;}
+    .nav-contacts { top: 8px; right: 10px; background-color: #202020; padding: 10px; border: 1px solid rgb(53, 53, 53); border-radius: 20px; cursor: pointer;}
     
  
 
@@ -82,7 +82,7 @@
       display: inline-block;
       padding: 20px 40px;
       background-color: #007bff; /* синий */
-      border: 1px solid rgb(255, 255, 255);
+      border: 1px solid rgb(200, 200, 200);
       color: white;
       text-decoration: none;
       border-radius: 40px;
@@ -150,7 +150,7 @@
       font-size: 18px;
       padding: 8px;
       border-radius: 12px;
-      border: 1px solid #555;
+      border: 1px solid rgb(53, 53, 53);
       background-color: #333;
       color: white;
     }
@@ -167,7 +167,7 @@
 
     #submit {
       background-color: #202020;
-      border: 1px solid #595959;
+      border: 1px solid rgb(53, 53, 53);
       border-radius: 30px;
       color: white;
       padding: 12px 24px;
@@ -194,7 +194,7 @@
       min-height: 300px; /* теперь не сжимаются */
       padding: 20px;
       background-color: #222;
-      border: 1px solid #444;
+      border: 1px solid rgb(53, 53, 53);
       color: white;
       text-align: center;
       border-radius: 16px;
@@ -292,7 +292,7 @@
   width: 90%;
   max-width: 600px;
   background-color: #1a1a1a;
-  border: 1px solid #595959;
+  border: 1px solid rgb(53, 53, 53);
   border-radius: 30px;
   padding: 30px;
   color: white;
