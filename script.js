@@ -164,17 +164,19 @@ function hideAll() {
 function updateView() {
   hideAll();
 
-  if (items[index] === "Легковые шины") {
+  const currentCategory = items[index];
+
+  if (currentCategory === "Легковые шины") {
     filtersSize.style.display = "block";
-  } else if (items[index] === "Грузовые шины") {
+  } else if (currentCategory === "Грузовые шины") {
     filtersTruck.style.display = "block";
-  } else if (items[index] === "Сельхоз шины") {
+  } else if (currentCategory === "Сельхоз шины") {
     filtersAgro.style.display = "block";
-  } else if (items[index] === "Диски") {
+  } else if (currentCategory === "Диски") {
     filtersWheel.style.display = "block";
   }
 
-  loadCategoryData(category);
+  loadCategoryData(currentCategory);
 }
 
 document.getElementById("prev").onclick = () => {
