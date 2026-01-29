@@ -53,6 +53,7 @@ scrollButtons.forEach(btn => {
 
 // === Динамическое обнавление <option> ===
 function populateFilters(data, type) {
+  console.log("Загружено", data.length, "товаров типа", type);
   if (type === "Легковые шины") {
     const sizes = [...new Set(data.map(i => i["Типоразмер"]))].sort();
     const sel = document.getElementById("width");
