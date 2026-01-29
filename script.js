@@ -51,9 +51,34 @@ scrollButtons.forEach(btn => {
 
 
 
+// Логика загрузки данных
+function loadCategoryData(category) {
+  let url = "";
+  if (category === "Легковые шины") url = "Готовые json/Легковые шины в json.json";
+  else if (category === "Грузовые шины") url = "Готовые json/Грузовые шины в json.json";
+  else if (category === "Сельхоз шины") url = "Готовые json/Сельхоз шины в json.json";
+  else if (category === "Диски") url = "Готовые json/Диски в json.json";
+  else return;
+
+  fetch(url)
+    .then(res => {
+      if (!res.ok) throw new Error(`Ошибка загрузки ${category}`);
+      return res.json();
+    })
+    .then(data => {
+      populateFilters(data, category);
+    })
+    .catch(err => {
+      console.error(err);
+      showToast("Не удалось загрузить каталог");
+    });
+}
+
+
+
+
 // === Динамическое обнавление <option> ===
 function populateFilters(data, type) {
-  console.log("Загружено", data.length, "товаров типа", type);
   if (type === "Легковые шины") {
     const sizes = [...new Set(data.map(i => i["Типоразмер"]))].sort();
     const sel = document.getElementById("width");
@@ -148,6 +173,8 @@ function updateView() {
   } else if (items[index] === "Диски") {
     filtersWheel.style.display = "block";
   }
+
+  loadCategoryData(category);
 }
 
 document.getElementById("prev").onclick = () => {
@@ -266,7 +293,6 @@ document.getElementById("submit").onclick = () => {
       return res.json();
     })
     .then(items => {
-      populateFilters(items, current);
       const filtered = items.filter(filterFn);
       showResults(filtered, current);
     })
