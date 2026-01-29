@@ -1,4 +1,4 @@
-// уведомление
+// === Уведомление ===
 let toastTimeout = null;
 
 function showToast(message) {
@@ -6,20 +6,16 @@ function showToast(message) {
   toast.textContent = message;
   toast.style.display = "block";
 
-  // Очищаем старый таймер, если он есть
   if (toastTimeout) {
     clearTimeout(toastTimeout);
   }
 
-  // Ставим новый таймер
   toastTimeout = setTimeout(() => {
     toast.style.display = "none";
-    toastTimeout = null; // сбрасываем
+    toastTimeout = null;
   }, 1000);
 }
 
-
-// Количество товаров в корзине
 function getCartCountText() {
   const total = cart.reduce((sum, entry) => sum + entry.count, 0);
   let word = "товар";
@@ -34,7 +30,9 @@ function getCartCountText() {
 }
 
 
-// Берём все ссылки в шапке
+
+
+// === Берём все ссылки в шапке ===
 const scrollButtons = document.querySelectorAll('[data-scroll-to]');
 
 scrollButtons.forEach(btn => {
@@ -50,21 +48,86 @@ scrollButtons.forEach(btn => {
   });
 });
 
+
+
+
+// === Динамическое обнавление <option> ===
+function populateFilters(data, type) {
+  if (type === "Легковые шины") {
+    const sizes = [...new Set(data.map(i => i["Типоразмер"]))].sort();
+    const sel = document.getElementById("width");
+    sel.innerHTML = '<option value="">Типоразмер</option>';
+    sizes.forEach(s => {
+      const opt = document.createElement("option");
+      opt.value = s;
+      opt.textContent = s;
+      sel.appendChild(opt);
+    });
+  }
+
+  else if (type === "Грузовые шины") {
+    const sizes = [...new Set(data.map(i => i["Типоразмер"]))].sort();
+    const sel = document.getElementById("size_truck");
+    sel.innerHTML = '<option value="">Типоразмер</option>';
+    sizes.forEach(s => {
+      const opt = document.createElement("option");
+      opt.value = s;
+      opt.textContent = s;
+      sel.appendChild(opt);
+    });
+  }
+
+  else if (type === "Сельхоз шины") {
+    const sizes = [...new Set(data.map(i => i["Типоразмер"]))].sort();
+    const sel = document.getElementById("size_agro");
+    sel.innerHTML = '<option value="">Типоразмер</option>';
+    sizes.forEach(s => {
+      const opt = document.createElement("option");
+      opt.value = s;
+      opt.textContent = s;
+      sel.appendChild(opt);
+    });
+  }
+
+  else if (type === "Диски") {
+    const fields = [
+      { key: "Диаметр", el: "radius_disk", label: "Радиус" },
+      { key: "Болт_количество", el: "holes_disk", label: "Кол-во отверстий" },
+      { key: "PCD", el: "pcd_disk", label: "PCD" },
+      { key: "ET", el: "et_disk", label: "ET" },
+      { key: "DIA", el: "dia_disk", label: "DIA" }
+    ];
+
+    fields.forEach(f => {
+      const values = [...new Set(data.map(i => i[f.key]))].filter(v => v && v !== "0.00").sort();
+      const sel = document.getElementById(f.el);
+      sel.innerHTML = `<option value="">${f.label}</option>`;
+      values.forEach(v => {
+        const opt = document.createElement("option");
+        opt.value = v;
+        opt.textContent = v;
+        sel.appendChild(opt);
+      });
+    });
+  }
+}
+
+
+
+
+// === Слайдер ===
 const items = ["Легковые шины", "Грузовые шины", "Сельхоз шины", "Диски"];
 let index = 0;
 
 const currentEl = document.getElementById("current");
 
-// Блоки фильтров
 const filtersSize = document.getElementById("filters_size_passenger_cars");
 const filtersTruck = document.getElementById("filters_truck");
 const filtersAgro = document.getElementById("filters_agro");
 const filtersWheel = document.getElementById("filters_wheel");
 
-// Кнопка
 const submitBtn = document.getElementById("submit");
 
-// Скрываем все фильтры
 function hideAll() {
   filtersSize.style.display = "none";
   filtersTruck.style.display = "none";
@@ -86,7 +149,6 @@ function updateView() {
   }
 }
 
-// Кнопки слайдера
 document.getElementById("prev").onclick = () => {
   index = index === 0 ? items.length - 1 : index - 1;
   currentEl.textContent = items[index];
@@ -99,7 +161,6 @@ document.getElementById("next").onclick = () => {
   updateView();
 };
 
-// Карточки товаров
 const resultsEl = document.getElementById("results");
 
 document.getElementById("submit").onclick = () => {
@@ -111,7 +172,6 @@ document.getElementById("submit").onclick = () => {
   let url = "";
   let filterFn = () => true;
 
-  // === Определяем, какой файл грузить и как фильтровать ===
   if (current === "Легковые шины") {
     url = "Готовые json/Легковые шины в json.json";
 
@@ -172,20 +232,17 @@ document.getElementById("submit").onclick = () => {
     const etEl = document.getElementById("et_disk");
     const diaEl = document.getElementById("dia_disk");
 
-    // Берём выбранные <option>
     const radiusOpt = radiusEl.options[radiusEl.selectedIndex];
     const holesOpt = holesEl.options[holesEl.selectedIndex];
     const pcdOpt = pcdEl.options[pcdEl.selectedIndex];
     const etOpt = etEl.options[etEl.selectedIndex];
     const diaOpt = diaEl.options[diaEl.selectedIndex];
 
-    // Проверяем: выбраны ли ВСЕ
     if (!radiusOpt.value || !holesOpt.value || !pcdOpt.value || !etOpt.value || !diaOpt.value) {
       alert("Выберите радиус, кол-во отверстий, PCD, ET и DIA");
       return;
     }
 
-    // Берём ТЕКСТ (как у грузовых!)
     const radiusText = radiusOpt.textContent.trim();
     const holesText = holesOpt.textContent.trim();
     const pcdText = pcdOpt.textContent.trim();
@@ -200,7 +257,6 @@ document.getElementById("submit").onclick = () => {
       item["DIA"] === diaText;
   }
 
-  // === Загружаем нужный файл ===
   if (!url) return;
 
   fetch(url)
@@ -209,6 +265,7 @@ document.getElementById("submit").onclick = () => {
       return res.json();
     })
     .then(items => {
+      populateFilters(items, current);
       const filtered = items.filter(filterFn);
       showResults(filtered, current);
     })
@@ -243,12 +300,8 @@ function showResults(items, type) {
 
 
 
-
-
-
-
 // === Корзина ===
-let cart = []; // [{ item, count }]
+let cart = [];
 
 const cartIcon = document.getElementById("cart-icon");
 const cartToggle = document.getElementById("cart-toggle");
@@ -258,7 +311,6 @@ const cartItemsEl = document.getElementById("cart-items");
 const totalPriceEl = document.getElementById("total-price");
 const checkoutBtn = document.getElementById("checkout");
 
-// Обновить иконку корзины
 function updateCartIcon() {
   if (cart.length === 0) {
     cartIcon.src = "корзина-пустая.png";
@@ -267,7 +319,6 @@ function updateCartIcon() {
   }
 }
 
-// Показать/скрыть попап
 cartToggle.addEventListener("click", (e) => {
   e.preventDefault();
   overlay.style.display = "block";
@@ -280,7 +331,6 @@ overlay.addEventListener("click", () => {
   cartPopup.style.display = "none";
 });
 
-// Удалить товар из корзины
 function removeFromCart(index) {
   cart.splice(index, 1);
   saveCart();
@@ -288,7 +338,6 @@ function removeFromCart(index) {
   updateCartIcon();
 }
 
-// Изменить количество товара
 function changeCount(index, delta) {
   cart[index].count += delta;
   if (cart[index].count <= 0) {
@@ -304,7 +353,6 @@ function saveCart() {
   // пока просто держим в переменной
 }
 
-// Рендер корзины в попапе
 function renderCart() {
   cartItemsEl.innerHTML = "";
   let total = 0;
@@ -323,6 +371,10 @@ function renderCart() {
         <div class="model">${item["Модель"]}</div>
         <div class="price">${count} шт × ${price} ₽ = ${lineTotal} ₽</div>
       </div>
+      <div style="display:flex;flex-direction:column;align-items:center;">
+        <button class="cart-plus">+</button>
+        <button class="cart-minus">–</button>
+      </div>
       <button class="remove-btn">×</button>
     `;
     div.querySelector(".remove-btn").onclick = () => removeFromCart(i);
@@ -332,10 +384,8 @@ function renderCart() {
   totalPriceEl.textContent = total;
 }
 
-// === Добавление товаров из карточек ===
-
-// Ловим клики по + и - ВЕЗДЕ на странице (включая попап, но там их нет)
 document.addEventListener("click", (e) => {
+  // === В карточках товаров (каталог) ===
   if (e.target.classList.contains("btn-plus")) {
     const card = e.target.closest(".product-card");
     if (!card) return;
@@ -360,10 +410,18 @@ document.addEventListener("click", (e) => {
     if (existing) {
       existing.count++;
     } else {
-      cart.push({ item: { "Модель": model, "Цена": price, "Фото": photo, "Максимум": maxStock }, count: 1 });
+      cart.push({
+        item: {
+          "Модель": model,
+          "Цена": price,
+          "Фото": photo,
+          "Максимум": maxStock
+        },
+        count: 1
+      });
     }
 
-    showToast(getCartCountText()); // ← вот так!
+    showToast(getCartCountText());
     updateCartIcon();
   }
 
@@ -376,7 +434,7 @@ document.addEventListener("click", (e) => {
 
     if (existingIndex !== -1) {
       cart[existingIndex].count--;
-      showToast(getCartCountText()); // ← и тут!
+      showToast(getCartCountText());
 
       if (cart[existingIndex].count <= 0) {
         cart.splice(existingIndex, 1);
@@ -385,12 +443,48 @@ document.addEventListener("click", (e) => {
       updateCartIcon();
     }
   }
+
+  // === В корзине (попап) ===
+  if (e.target.classList.contains("cart-plus")) {
+    const itemEl = e.target.closest(".cart-item");
+    if (!itemEl) return;
+
+    const model = itemEl.querySelector(".model").textContent;
+    const entry = cart.find(item => item.item["Модель"] === model);
+    if (!entry) return;
+
+    if (entry.count >= entry.item["Максимум"]) {
+      showToast("Это всё, что есть в наличии");
+      return;
+    }
+
+    entry.count++;
+    saveCart();
+    renderCart();
+    showToast(getCartCountText());
+  }
+
+  if (e.target.classList.contains("cart-minus")) {
+    const itemEl = e.target.closest(".cart-item");
+    if (!itemEl) return;
+
+    const model = itemEl.querySelector(".model").textContent;
+    const index = cart.findIndex(item => item.item["Модель"] === model);
+    if (index === -1) return;
+
+    cart[index].count--;
+    if (cart[index].count <= 0) {
+      cart.splice(index, 1);
+    }
+
+    saveCart();
+    renderCart();
+    showToast(getCartCountText());
+  }
 });
 
-// Кнопка "К оформлению"
 checkoutBtn.addEventListener("click", () => {
-  alert("Переход к оформлению (пока заглушка)");
-  // Здесь можно сделать переход на другую страницу или форму
+  alert("Переход к оформлению");
 });
 
 // Инициализация
