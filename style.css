@@ -268,9 +268,6 @@
 
 
 
-
-
-
 /* Попап корзины */
 #overlay {
   position: fixed;
@@ -359,6 +356,26 @@
   font-size: 20px;
   cursor: pointer;
   align-self: flex-end;
+}
+
+.cart-plus,
+.cart-minus {
+  width: 24px;
+  height: 24px;
+  margin: 2px 0;
+  background: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-plus:hover,
+.cart-minus:hover {
+  background: #e0e0e0;
 }
 
 
