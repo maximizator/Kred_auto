@@ -377,22 +377,3 @@
 .cart-minus:hover {
   background: #e0e0e0;
 }
-
-
-
-
-
-
-/* Уведомление */
-#toast {
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: rgba(0, 0, 0);
-  color: white;
-  padding: 10px 20px;
-  border-radius: 8px;
-  font-size: 16px;
-  z-index: 2000;
-}
