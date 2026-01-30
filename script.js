@@ -466,9 +466,9 @@ document.addEventListener("click", (e) => {
       showToast(getCartCountText());
 
       if (cart[existingIndex].count <= 0) {
-        cart.splice(existingIndex, 1);
       }
 
+      showToast(getCartCountText());
       updateCartIcon();
     }
   }
