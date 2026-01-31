@@ -302,9 +302,9 @@ function showResults(items, type) {
       <div class="price">Цена: ${item["Цена"]} ₽</div>
       <img class="photo" src="${item["Фото"]}" alt="${item["Модель"]}">
       <div class="counter">
-        <button class="btn-minus">–</button>
         <span class="count">0</span>
         <button class="btn-plus">+</button>
+        <button class="btn-minus">–</button>
       </div>
     `;
     resultsEl.appendChild(card);
@@ -448,10 +448,11 @@ document.addEventListener("click", (e) => {
     const model = card.querySelector(".model").textContent;
     const existingIndex = cart.findIndex(entry => entry.item["Модель"] === model);
 
-    if (existingIndex !== -1) {
+    if (existingIndex !== -1 && cart[existingIndex].count > 0) {
       cart[existingIndex].count--;
-
-      if (cart[existingIndex].count <= 0) {
+      
+      if (cart[existingIndex].count === 0) {
+        cart.splice(existingIndex, 1);
       }
 
       updateCartIcon();
