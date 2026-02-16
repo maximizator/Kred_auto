@@ -1,0 +1,379 @@
+  * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: rgb(23, 23, 23);
+      width: 1400px;
+      margin: 0 auto;
+    }
+
+    section {
+      position: relative;
+      border-radius: 30px;
+      margin-top: 20px;
+      border: 1px solid rgb(53, 53, 53)
+    }
+
+    /* Шапка */
+    .top-bar {
+      height: 60px;
+      background-color: #000000;
+    }
+    
+    .top-bar a,
+    .top-bar .logo-text {
+      position: absolute;
+      color: rgb(255, 255, 255);
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .logo-text { top: 8px; left: 10px; background-color: #202020; padding: 10px; border: 1px solid rgb(53, 53, 53); border-radius: 20px;}
+    
+    .nav-cart {top: 13px; right: 565px; cursor: pointer;}
+    .nav-cart img {width: 35px; height: auto;}
+
+    .nav-admin { top: 8px; right: 340px; background-color: #202020; padding: 10px; border: 1px solid rgb(53, 53, 53); border-radius: 20px; cursor: pointer;}
+    .nav-about { top: 8px; right: 250px; background-color: #202020; padding: 10px; border: 1px solid rgb(53, 53, 53); border-radius: 20px; cursor: pointer;}
+    .nav-catalog { top: 8px; right: 137px; background-color: #202020; padding: 10px; border: 1px solid rgb(53, 53, 53); border-radius: 20px; cursor: pointer;}
+    .nav-contacts { top: 8px; right: 10px; background-color: #202020; padding: 10px; border: 1px solid rgb(53, 53, 53); border-radius: 20px; cursor: pointer;}
+    
+
+
+
+
+    /* Секция с картинкой */
+    .hero {
+      height: 600px; /* высота секции */
+      background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('bg.jpg'); /* замени на свою */
+      background-size: cover;
+      background-position: center;
+      border-radius: 30px;
+    }
+
+    /* Текст поверх картинки */
+    .hero-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: white;
+      width: 80%;
+    }
+
+    .hero h1 {
+      font-size: 100px;
+      margin-bottom: 50px;
+    }
+
+    .hero p {
+      font-size: 16px;
+      margin-bottom: 50px;
+    }
+
+    /* Кнопка */
+    .hero .btn {
+      display: inline-block;
+      padding: 20px 40px;
+      background-color: #1d5c9e; /* синий */
+      border: none;
+      color: white;
+      text-decoration: none;
+      border-radius: 40px;
+      font-weight: bold;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    /* Секция "О нас" */
+    .about {
+      color: white;
+      padding: 40px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .about-left {
+      width: 45%;
+    }
+
+    .about-left h2 {
+      font-size: 50px;
+      margin-bottom: 10px;
+    }
+
+    .about-left p {
+      font-size: 18px;
+    }
+
+    .about-right {
+      width: 50%;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+
+
+    /* Секция подбора шин */
+    .tire-selector {
+      color: white;
+      padding: 30px;
+      border-radius: 30px;
+      margin-top: 20px;
+      font-size: 50px; /* уменьшил — 50px слишком огромно */
+      background-color: #1a1a1a; /* добавил фон, чтобы видно было */
+    }
+
+    #slider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    #slider img {
+      width: 80px; /* стрелки не должны быть гигантскими */
+      height: auto;
+    }
+
+    .tire-selector select,
+    .tire-selector button {
+      display: block;
+      margin: 8px auto;
+      width: 280px;
+      font-size: 18px;
+      padding: 8px;
+      border-radius: 12px;
+      border: 1px solid rgb(53, 53, 53);
+      background-color: #333;
+      color: white;
+    }
+
+    #prev, #next {
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #submit {
+      background-color: #202020;
+      border: 1px solid rgb(53, 53, 53);
+      border-radius: 30px;
+      color: white;
+      padding: 12px 24px;
+      font-size: 20px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    #submit:hover {
+      background-color: #333;
+    }
+
+    /* Результаты */
+    #results {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    .product-card {
+      width: 320px; /* было 300px → стало больше */
+      min-height: 300px; /* теперь не сжимаются */
+      padding: 20px;
+      background-color: #222;
+      border: 1px solid rgb(53, 53, 53);
+      color: white;
+      text-align: center;
+      border-radius: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .model {
+      font-weight: bold;
+      font-size: 18px;
+      margin-bottom: 10px;
+      word-break: break-word;
+    }
+
+    .stock, .price {
+      margin: 6px 0;
+      font-size: 16px;
+    }
+
+    .photo {
+      width: 100%;
+      height: 120px;
+      object-fit: contain;
+      margin: 10px 0;
+    }
+
+    /* Кнопки + и - */
+    .btn-plus, .btn-minus {
+      width: 36px;
+      height: 36px;
+      font-size: 20px;
+      margin: 6px 4px; /* меньше горизонтальный отступ */
+      border: none;
+      border-radius: 50%;
+      background-color: #202020;
+      color: white;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-plus:hover,
+    .btn-minus:hover {
+      background-color: #444;
+    }
+
+
+    
+
+
+
+    /* Секция "Контакты" */
+    .contacts {
+      color: white;
+      padding: 40px;
+      text-align: center;
+    }
+
+    .contacts h2 {
+      font-size: 80px;
+      margin-bottom: 20px;
+    }
+
+    .contacts p {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+
+
+
+  /* Попап корзины */
+  #overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 999;
+  }
+
+
+  #cart-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 600px;
+  background-color: #1a1a1a;
+  border: 1px solid rgb(53, 53, 53);
+  border-radius: 30px;
+  padding: 30px;
+  color: white;
+  z-index: 1000;
+  max-height: 80vh;
+  overflow-y: auto;
+  }
+
+  .cart-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  }
+
+  .cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #222;
+  padding: 15px;
+  border-radius: 16px;
+  position: relative;
+  }
+
+  .cart-item .model {
+  font-weight: bold;
+  font-size: 18px;
+  }
+
+  .cart-item .price {
+  margin: 4px 0;
+  }
+
+  .cart-item img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-right: 15px;
+  }
+
+  .remove-btn {
+  background: none;
+  border: none;
+  color: red;
+  font-size: 24px;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  }
+
+  .cart-total {
+  font-size: 24px;
+  text-align: right;
+  margin-top: 10px;
+  }
+
+  #checkout {
+  background-color: #1d5c9e;
+  border: none;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-size: 20px;
+  cursor: pointer;
+  align-self: flex-end;
+  }
+
+  .cart-plus,
+  .cart-minus {
+  width: 24px;
+  height: 24px;
+  margin: 2px 0;
+  background: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  }
+
+  .cart-plus:hover,
+  .cart-minus:hover {
+  background: #e0e0e0;
+  }

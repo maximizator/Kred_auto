@@ -1,0 +1,86 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: Arial, sans-serif;
+    background: #1a1a1a;
+    color: white;
+    width: 1400px;
+    margin: 20px auto;
+}
+
+/* Слайдер */
+#slider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+#slider img { width: 60px; }
+#current { font-size: 24px; margin: 0 20px; }
+
+#prev, #next {
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Карточка формы */
+.form-card {
+    background: #222;
+    border: 1px solid #444;
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.fields {
+    display: grid;
+    gap: 12px;
+    width: calc(100% - 100px);
+}
+.fields input {
+    padding: 8px;
+    border-radius: 10px;
+    background: #333;
+    color: white;
+    border: 1px solid #555;
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 80px;
+}
+.btn-plus, .btn-minus {
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 50%;
+    background: #444;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Кнопки сохранения */
+.save-actions {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+}
+.save-btn {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 30px;
+    font-size: 18px;
+    cursor: pointer;
+}
+.add-btn { background: #1d5c9e; color: white; }
+.replace-btn { background: #c0392b; color: white; }

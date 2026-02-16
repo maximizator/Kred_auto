@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Кред авто</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="favicon.png">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <!-- Шапка -->
+  <section class="top-bar">
+    <div class="logo-text">Кред-авто</div>
+
+    <a id="cart-toggle" class="nav-cart"><img src="cart-empty.png" alt="Корзина" id="cart-icon"></a>
+    <a id="admin" class="nav-admin" href="admin-login/admin-login.html">Вход для персонала</a>
+    <a data-scroll-to="about" class="nav-about">О нас</a>
+    <a data-scroll-to="catalog" class="nav-catalog">Каталог</a>
+    <a data-scroll-to="contacts" class="nav-contacts">Контакты</a>
+  </section>
+
+  <div id="cart-popup" style="display:none;">
+    <div class="cart-content">
+      <h2>Корзина</h2>
+      <div id="cart-items"></div>
+      <div class="cart-total">Итого: <span id="total-price">0</span> ₽</div>
+      <button id="checkout" class="btn">К оформлению</button>
+    </div>
+  </div>
+
+  <div id="overlay" style="display:none;"></div>
+
+  <!-- Секция с картинкой и текстом -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>О продукции</h1>
+      <p>Мы занимаемся продажей легковых и грузовых шин,<br>предлагая широкий выбор качественных шин для любых потребностей.</p>
+      <button type="button" class="btn" data-scroll-to="catalog">Выбрать шины</button>
+    </div>
+  </section>
+
+  <!-- Секция "О нас" -->
+  <section class="about" id="about">
+    <div class="about-left">
+      <h2>О нас</h2>
+      <p>Ваш надежный партнер в мире шин</p>
+    </div>
+    <div class="about-right">
+      <p>Мы спеализируемся на продаже шин для легковых и грузовых автомобилей. Наша миссия - обеспечить клиентов качественными шинами, которые гарантируют безопасность и комфорт на дороге. Мы ценим надежность, качество и индивидуальный подход к каждому клиенту. Сотрудничество с нами - это гарантия высокого качества и профессионального обслуживания.</p>
+    </div>
+  </section>
+
+
+
+  <section class="tire-selector" id="catalog">
+    <div id="slider">
+      <button id="prev"><img src="arrow-right.png" alt=""></button>
+      <span id="current">Легковые шины</span>
+      <button id="next"><img src="arrow-left.png" alt=""></button>
+    </div>
+
+    <!-- Блок "по размеру" -->
+    <div id="filters_size_passenger_cars" style="display:none;">
+      <select id="width">
+        <option value="">Типоразмер</option>
+      </select>
+
+      <select id="season">
+          <option value="">Сезон</option>
+          <option value="winter_non_stud">Зимние нешипованные</option>
+          <option value="winter_stud">Зимние шипованные</option>
+          <option value="summer">Летние</option>
+      </select>
+    </div>
+
+    <!-- Грузовые шины -->
+    <div id="filters_truck" style="display:none;">
+      <select id="size_truck">
+        <option value="">Типоразмер</option>
+      </select>
+    </div>
+
+    <!-- Сельхоз шины -->
+    <div id="filters_agro" style="display:none;">
+      <select id="size_agro">
+        <option value="">Типоразмер</option>
+      </select>
+    </div>
+
+    <!-- Диски -->
+    <div id="filters_wheel" style="display:none;">
+      <select id="radius_disk">
+        <option value="">Радиус</option>
+      </select>
+
+      <select id="holes_disk">
+        <option value="">Кол-во отверстий</option>
+      </select>
+
+      <select id="pcd_disk">
+        <option value="">PCD</option>
+      </select>
+
+      <select id="et_disk">
+        <option value="">ET</option>
+      </select>
+
+      <select id="dia_disk">
+        <option value="">DIA</option>
+      </select>
+    </div>
+
+    <button id="submit">Подобрать</button>
+
+    <div id="results"></div>
+  </section>
+
+  <!-- Секция "Контакты" -->
+  <section class="contacts" id="contacts">
+    <h2>Контакты</h2>
+    <p>Телефон: +7 (996) 510-00-25</p>
+    <p>Адрес: г. Волгоград, ул. 40 лет ВЛКСМ, д. 72А</p>
+  </section>
+</body>
+</html>

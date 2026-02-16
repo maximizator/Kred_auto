@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Админ-панель</title>
+  <link rel="stylesheet" href="admin-panel.css">
+  <link rel="icon" href="../favicon.png">
+</head>
+<body>
+
+<!-- Слайдер -->
+<div id="slider">
+  <button id="prev"><img src="../arrow-right.png" alt=""></button>
+  <span id="current">Легковые шины</span>
+  <button id="next"><img src="../arrow-left.png" alt=""></button>
+</div>
+
+<!-- Контейнер форм -->
+<div id="forms-container"></div>
+
+<!-- Кнопки сохранения -->
+<div class="save-actions">
+  <button class="save-btn add-btn" onclick="saveData(false)">Добавить к предыдущим</button>
+  <button class="save-btn replace-btn" onclick="saveData(true)">Заменить старые на новые</button>
+</div>
+
+<script src="admin-panel.js"></script>
+</body>
+</html>
