@@ -1,1 +1,0 @@
-# Kred_auto

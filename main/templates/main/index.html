@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head><title>Отчет по заданию</title></head>
+<body>
+    <h1>Реализация 8 пунктов задания</h1>
+
+    <h2>1. Клиенты из Франции (Текстовое поле)</h2>
+    <table border="1">
+        <tr><th>Код</th><th>ФИО</th><th>Адрес</th><th>Телефон</th></tr>
+        {% for client in france_clients %}
+        <tr>
+            <td>{{ client.code }}</td>
+            <td>{{ client.fio }}</td>
+            <td>{{ client.address }}</td>
+            <td>{{ client.phone }}</td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="4">Нет данных</td></tr>
+        {% endfor %}
+    </table>
+
+    <h2>2. Заказы от 08.07.2013 (Поле даты)</h2>
+    <table border="1">
+        <tr><th>ID заказа</th><th>Дата</th><th>Клиент</th></tr>
+        {% for order in orders_on_date %}
+        <tr>
+            <td>{{ order.id }}</td>
+            <td>{{ order.order_date }}</td>
+            <td>{{ order.customer.fio }}</td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="3">Нет данных</td></tr>
+        {% endfor %}
+    </table>
+
+    <h2>3. Статистика по количеству (Расчет в столбце)</h2>
+    <table border="1">
+        <tr><th>Сумма</th><th>Среднее</th><th>Максимум</th><th>Минимум</th></tr>
+        <tr>
+            <td>{{ stats.sum }}</td>
+            <td>{{ stats.avg }}</td>
+            <td>{{ stats.max }}</td>
+            <td>{{ stats.min }}</td>
+        </tr>
+    </table>
+
+    <h2>4. Клиенты с почтой Gmail (Поле почты)</h2>
+    <table border="1">
+        <tr><th>ФИО</th><th>Email</th></tr>
+        {% for client in gmail_clients %}
+        <tr>
+            <td>{{ client.fio }}</td>
+            <td>{{ client.email }}</td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="2">Нет данных</td></tr>
+        {% endfor %}
+    </table>
+
+    <h2>5. Товары: Электроника И Цена > 5000 (Двойное условие)</h2>
+    <table border="1">
+        <tr><th>Название</th><th>Цена</th><th>Категория</th></tr>
+        {% for prod in double_condition_products %}
+        <tr>
+            <td>{{ prod.name }}</td>
+            <td>{{ prod.price }}</td>
+            <td>{{ prod.category.name }}</td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="3">Нет данных</td></tr>
+        {% endfor %}
+    </table>
+
+    <h2>6. Расчет суммы в строке (Кол-во * Цена)</h2>
+    <table border="1">
+        <tr><th>Товар</th><th>Кол-во</th><th>Цена</th><th>Сумма (формула)</th></tr>
+        {% for item in details_with_calc %}
+        <tr>
+            <td>{{ item.product_name }}</td>
+            <td>{{ item.qty }}</td>
+            <td>{{ item.price }}</td>
+            <td>{{ item.total }}</td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="4">Нет данных</td></tr>
+        {% endfor %}
+    </table>
+
+    <h2>7. Товары > 1000 руб (Сортировка по цене)</h2>
+    <table border="1">
+        <tr><th>Название</th><th>Цена</th></tr>
+        {% for prod in sorted_products %}
+        <tr>
+            <td>{{ prod.name }}</td>
+            <td>{{ prod.price }}</td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="2">Нет данных</td></tr>
+        {% endfor %}
+    </table>
+
+    <h2>8. Выборка из двух таблиц (Товар + Категория)</h2>
+    <table border="1">
+        <tr><th>Товар</th><th>Категория</th></tr>
+        {% for prod in products_with_cat %}
+        <tr>
+            <td>{{ prod.name }}</td>
+            <td>{{ prod.category.name }}</td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="2">Нет данных</td></tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
